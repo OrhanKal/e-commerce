@@ -1,32 +1,20 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import axios from 'axios';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
-
-const notify = () => toast("Bildirim!");
-
-// notify() fonksiyonunu bir olayda çağırabilirsiniz.
-
-
-const fetchData = async () => {
-  const response = await axios.get('https://api.example.com/data');
-  console.log(response.data);
-};
+import Header from './layout/Header';
+import Footer from './layout/Footer';
+import HomePage from './pages/HomePage';
+import PageContent from './layout/PageContent';
 
 function App() {
   return (
     <Router>
-      <ToastContainer />
-      <Switch>
-        <Route path="/" exact>
-          <h1>Anasayfa</h1>
-        </Route>
-        <Route path="/hakkimizda">
-          <h1>Hakkımızda</h1>
-        </Route>
-        {/* Diğer route'lar burada */}
-      </Switch>
+      <Header />
+      <PageContent>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          {/* Diğer sayfalar buraya eklenebilir */}
+        </Switch>
+      </PageContent>
+      <Footer />
     </Router>
   );
 }
