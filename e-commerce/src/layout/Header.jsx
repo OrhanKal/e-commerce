@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faSearch, faShoppingCart, faBars } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
@@ -11,12 +11,30 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   };
 
-  const toggleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
+  const toggleDropdown = (e) => {
+    e.stopPropagation(); // Tıklama olayının yayılmasını durdur
+    setDropdownOpen((prev) => {
+      console.log('Dropdown durumu:', !prev); // Durumun değişip değişmediğini izleyin
+      return !prev;
+    });
   };
 
+  // Dropdown dışında bir yere tıklanınca dropdown'ı kapat
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (!event.target.closest('.dropdown-button') && !event.target.closest('.dropdown-menu')) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <header className="relative bg-white shadow-md w-full overflow-hidden">
+    <header className="relative bg-white shadow-md w-full">
       <div className="container mx-auto flex items-center justify-between p-4">
         <div className="text-xl font-bold">
           <Link to="/">Bandage</Link>
@@ -27,12 +45,12 @@ const Header = () => {
             <div className="relative">
               <button
                 onClick={toggleDropdown}
-                className="text-sm font-bold text-gray-700 hover:text-gray-900"
+                className="dropdown-button text-sm font-bold text-gray-700 hover:text-gray-900"
               >
                 Shop
               </button>
               {dropdownOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg p-4">
+                <div className="dropdown-menu absolute left-0 mt-2 w-48 bg-white shadow-lg p-4 z-100">
                   <div className="flex justify-between">
                     <div>
                       <h4 className="font-bold mb-2">Kadın</h4>
