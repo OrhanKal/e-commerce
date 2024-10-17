@@ -4,7 +4,7 @@ import ProductCard from "../components/ProductCard";
 
 const HomePage = () => {
   return (
-    <div className="w-full px-0 py-8">
+    <div className="w-full px-0 pb-8">
       {/* Slider */}
       <Slider />
 

@@ -20,16 +20,16 @@ const Slider = () => {
       }}
       navigation={true}
       modules={[Pagination, Navigation, Autoplay]}
-      className="w-full h-[300px] md:h-[500px] lg:h-[600px]"
+      className="w-full h-[100vh]"
     >
       <SwiperSlide>
-        <img src="https://via.assets.so/game.png?id=1&q=95&w=360&h=360&fit=fill" alt="Slide 1" className="w-full h-full object-cover" />
+        <img src={`https://via.assets.so/game.png?id=${Math.floor(Math.random() * 10)}&q=95&w=1920&h=1080&fit=fill`} alt="Slide 1" className="w-full h-full object-cover" />
       </SwiperSlide>
       <SwiperSlide>
-        <img src="https://via.assets.so/game.png?id=1&q=95&w=360&h=360&fit=fill" alt="Slide 2" className="w-full h-full object-cover"/>
+        <img src={`https://via.assets.so/game.png?id=${Math.floor(Math.random() * 20)}&q=95&w=1920&h=1080&fit=fill`} alt="Slide 2" className="w-full h-full object-cover"/>
       </SwiperSlide>
       <SwiperSlide>
-        <img src="https://via.assets.so/game.png?id=1&q=95&w=360&h=360&fit=fill" alt="Slide 3" className="w-full h-full object-cover"/>
+        <img src={`https://via.assets.so/game.png?id=${Math.floor(Math.random() * 30)}&q=95&w=1920&h=1080&fit=fill`} alt="Slide 3" className="w-full h-full object-cover"/>
       </SwiperSlide>
     </Swiper>
   );
