@@ -2,7 +2,7 @@ import React from 'react';
 
 const EditorsPick = () => {
   return (
-    <div className="container mx-auto my-8 px-4">
+    <div className="container mx-auto my-8 px-12">
       {/* Başlıklar */}
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold">EDITOR'S PICK</h2>
