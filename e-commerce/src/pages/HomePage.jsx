@@ -1,12 +1,16 @@
 import React from "react";
 import Slider from "../components/Slider";
 import ProductCard from "../components/ProductCard";
+import EditorsPick from "../layout/EditorsPick";
 
 const HomePage = () => {
   return (
     <div className="w-full px-0 pb-8">
       {/* Slider */}
       <Slider />
+
+      {/* Editor's Pick Bölümü */}
+      <EditorsPick />
 
       {/* Ürün Kartları */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
