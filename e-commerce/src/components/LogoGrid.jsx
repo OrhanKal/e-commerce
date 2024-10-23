@@ -12,7 +12,7 @@ const logos = [
 const LogoGrid = () => {
   return (
     <div className="w-full bg-[#FAFAFA] py-8">
-      <div className="container mx-auto flex flex-col items-center gap-8 md:flex-row md:flex-wrap md:justify-center md:gap-6">
+      <div className="container mx-auto flex flex-wrap justify-center gap-6">
         {logos.map((logo, index) => (
           <div key={index} className="w-24 h-16 md:w-28 md:h-20 flex items-center justify-center grayscale hover:grayscale-0 transition-all duration-300 ease-in-out">
             <img src={logo} alt={`logo-${index}`} className="object-contain w-full h-full filter brightness-75" />
