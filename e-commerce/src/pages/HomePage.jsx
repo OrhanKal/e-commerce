@@ -1,7 +1,8 @@
 import React from "react";
 import Slider from "../components/Slider";
-import ProductCard from "../components/ProductCard";
+import ProductGrid from "../layout/ProductGrid";
 import EditorsPick from "../layout/EditorsPick";
+import products from "../data/products";  // Ürün verilerini import ediyoruz
 
 const HomePage = () => {
   return (
@@ -13,36 +14,13 @@ const HomePage = () => {
       <EditorsPick />
 
       {/* Ürün Kartları */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        <ProductCard 
-          title="Graphic Design" 
-          subtitle="English Department" 
-          price="$16.48" 
-          discount="$6.48" 
-          image="https://via.placeholder.com/360x360" 
-        />
-        <ProductCard 
-          title="Graphic Design" 
-          subtitle="English Department" 
-          price="$16.48" 
-          discount="$6.48" 
-          image="https://via.placeholder.com/360x360" 
-        />
-        <ProductCard 
-          title="Graphic Design" 
-          subtitle="English Department" 
-          price="$16.48" 
-          discount="$6.48" 
-          image="https://via.placeholder.com/360x360" 
-        />
-        <ProductCard 
-          title="Graphic Design" 
-          subtitle="English Department" 
-          price="$16.48" 
-          discount="$6.48" 
-          image="https://via.placeholder.com/360x360" 
-        />
+      {/* Başlık */}
+      <div className="text-center my-8">
+        <p className="text-gray-500 text-xl">Featured Products</p>
+        <h2 className="text-2xl font-bold">BESTSELLER PRODUCTS</h2>
+        <p className="text-gray-500">Explore our exclusive collection</p>
       </div>
+      <ProductGrid products={products} />
     </div>
   );
 };
