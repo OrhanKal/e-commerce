@@ -3,9 +3,12 @@ import ProductGrid from "../layout/ProductGrid";
 import FilterRow from "../components/FilterRow";
 import products from "../data/products";
 import { Link } from 'react-router-dom';
+import Pagination from "../components/Pagination";
 
 const ShopPage = () => {
   const [view, setView] = useState("grid");
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 3;
 
   const categories = [
     {
@@ -41,6 +44,10 @@ const ShopPage = () => {
 
   const handleViewChange = (viewType) => {
     setView(viewType);
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -92,6 +99,13 @@ const ShopPage = () => {
       >
         <ProductGrid products={products} />
       </div>
+
+      {/* Pagination */}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };
