@@ -50,7 +50,7 @@ const Header = () => {
                 Shop
               </button>
               {dropdownOpen && (
-                <div className="dropdown-menu absolute left-0 mt-2 w-48 bg-white shadow-lg p-4 z-100">
+                <div className="dropdown-menu absolute left-0 mt-2 w-48 bg-white shadow-lg p-4 z-[100]">
                   <div className="flex justify-between">
                     <div>
                       <h4 className="font-bold mb-2">Kadın</h4>
