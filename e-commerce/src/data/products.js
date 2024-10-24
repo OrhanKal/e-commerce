@@ -1,47 +1,79 @@
+// products.js
 const products = [
     {
-      title: "Graphic Design",
+      id: 1,
+      title: "Floating Phone",
       subtitle: "English Department",
+      image: "https://via.placeholder.com/360x360",
       price: "$16.48",
       discount: "$6.48",
-      image: "https://via.placeholder.com/360x360"
+      colors: ["blue", "red", "yellow", "black"],
     },
     {
-      title: "Graphic Design",
-      subtitle: "English Department",
-      price: "$16.48",
-      discount: "$6.48",
-      image: "https://via.placeholder.com/360x360"
-    },
-    {
-      title: "Graphic Design",
-      subtitle: "English Department",
-      price: "$16.48",
-      discount: "$6.48",
-      image: "https://via.placeholder.com/360x360"
-    },
-    {
-      title: "Graphic Design",
-      subtitle: "English Department",
-      price: "$16.48",
-      discount: "$6.48",
-      image: "https://via.placeholder.com/360x360"
-    },
-    {
-      title: "Graphic Design",
-      subtitle: "English Department",
-      price: "$16.48",
-      discount: "$6.48",
-      image: "https://via.placeholder.com/360x360"
-    },
-    {
-      title: "Graphic Design",
-      subtitle: "English Department",
-      price: "$16.48",
-      discount: "$6.48",
-      image: "https://via.placeholder.com/360x360"
-    },
-    // Daha fazla ürün buraya eklenebilir
+        id: 1,
+        title: "Floating Phone",
+        subtitle: "English Department",
+        image: "https://via.placeholder.com/360x360",
+        price: "$16.48",
+        discount: "$6.48",
+        colors: ["blue", "red", "yellow", "black"],
+      },
+      {
+        id: 1,
+        title: "Floating Phone",
+        subtitle: "English Department",
+        image: "https://via.placeholder.com/360x360",
+        price: "$16.48",
+        discount: "$6.48",
+        colors: ["blue", "red", "yellow", "black"],
+      },
+      {
+        id: 1,
+        title: "Floating Phone",
+        subtitle: "English Department",
+        image: "https://via.placeholder.com/360x360",
+        price: "$16.48",
+        discount: "$6.48",
+        colors: ["blue", "red", "yellow", "black"],
+      },
+      {
+        id: 1,
+        title: "Floating Phone",
+        subtitle: "English Department",
+        image: "https://via.placeholder.com/360x360",
+        price: "$16.48",
+        discount: "$6.48",
+        colors: ["blue", "red", "yellow", "black"],
+      },
+      {
+        id: 1,
+        title: "Floating Phone",
+        subtitle: "English Department",
+        image: "https://via.placeholder.com/360x360",
+        price: "$16.48",
+        discount: "$6.48",
+        colors: ["blue", "red", "yellow", "black"],
+      },
+      {
+        id: 1,
+        title: "Floating Phone",
+        subtitle: "English Department",
+        image: "https://via.placeholder.com/360x360",
+        price: "$16.48",
+        discount: "$6.48",
+        colors: ["blue", "red", "yellow", "black"],
+      },
+      {
+        id: 1,
+        title: "Floating Phone",
+        subtitle: "English Department",
+        image: "https://via.placeholder.com/360x360",
+        price: "$16.48",
+        discount: "$6.48",
+        colors: ["blue", "red", "yellow", "black"],
+      },
+    // Diğer ürünler...
   ];
   
   export default products;
+  

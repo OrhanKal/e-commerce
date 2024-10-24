@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const ProductCard = ({ title, subtitle, price, discount, image }) => {
+const ProductCard = ({ id, title, subtitle, price, discount, image }) => {
   return (
-    <div className="bg-white rounded-lg overflow-hidden p-4">
+    <Link to={`/product/${id}`} className="bg-white rounded-lg overflow-hidden p-4 block">
       {/* Ürün Resmi */}
       <div className="w-full h-80">
         <img src={image} alt={title} className="w-full h-full object-cover" />
@@ -27,7 +28,7 @@ const ProductCard = ({ title, subtitle, price, discount, image }) => {
           <span className="w-4 h-4 rounded-full bg-black"></span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

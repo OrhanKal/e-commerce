@@ -4,6 +4,7 @@ import Footer from './layout/Footer';
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import PageContent from './layout/PageContent';
+import ProductDetailPage from './pages/ProductDetailPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
+          <Route exact path="/product/:productId" component={ProductDetailPage} />
           {/* Diğer sayfalar buraya eklenebilir */}
         </Switch>
       </PageContent>
