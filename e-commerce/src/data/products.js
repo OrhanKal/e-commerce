@@ -14,7 +14,37 @@ const products = [
       ],
     },
     {
-        id: 5,
+        id: 2,
+        title: "New Product",
+        subtitle: "Special Category",
+        price: "$99.99",
+        discount: "$79.99",
+        reviews: 15,
+        description: "This is a new product.",
+        colors: ["#ff0000", "#00ff00", "#0000ff"],
+        images: [
+          "https://via.placeholder.com/360x360",
+          "https://via.placeholder.com/360x360",
+          "https://via.placeholder.com/360x360"
+        ]
+      },
+      {
+        id: 3,
+        title: "New Product",
+        subtitle: "Special Category",
+        price: "$99.99",
+        discount: "$79.99",
+        reviews: 15,
+        description: "This is a new product.",
+        colors: ["#ff0000", "#00ff00", "#0000ff"],
+        images: [
+          "https://via.placeholder.com/360x360",
+          "https://via.placeholder.com/360x360",
+          "https://via.placeholder.com/360x360"
+        ]
+      },
+      {
+        id: 4,
         title: "New Product",
         subtitle: "Special Category",
         price: "$99.99",
@@ -44,37 +74,7 @@ const products = [
         ]
       },
       {
-        id: 5,
-        title: "New Product",
-        subtitle: "Special Category",
-        price: "$99.99",
-        discount: "$79.99",
-        reviews: 15,
-        description: "This is a new product.",
-        colors: ["#ff0000", "#00ff00", "#0000ff"],
-        images: [
-          "https://via.placeholder.com/360x360",
-          "https://via.placeholder.com/360x360",
-          "https://via.placeholder.com/360x360"
-        ]
-      },
-      {
-        id: 5,
-        title: "New Product",
-        subtitle: "Special Category",
-        price: "$99.99",
-        discount: "$79.99",
-        reviews: 15,
-        description: "This is a new product.",
-        colors: ["#ff0000", "#00ff00", "#0000ff"],
-        images: [
-          "https://via.placeholder.com/360x360",
-          "https://via.placeholder.com/360x360",
-          "https://via.placeholder.com/360x360"
-        ]
-      },
-      {
-        id: 5,
+        id: 6,
         title: "New Product",
         subtitle: "Special Category",
         price: "$99.99",

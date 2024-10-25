@@ -1,12 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ProductCard = ({ id, title, subtitle, price, discount, images }) => {
+const ProductCard = ({ id, title, subtitle, price, discount, image }) => {
   return (
-    <Link to={`/product/${id}`} className="bg-white rounded-lg overflow-hidden p-4">
+    <Link to={`/product/${id}`} className="block bg-white rounded-lg overflow-hidden p-4 hover:shadow-lg transition-shadow duration-300">
       {/* Ürün Resmi */}
       <div className="w-full h-80">
-        <img src={images[0]} alt={title} className="w-full h-full object-cover" />
+        <img
+          src={image || "https://via.placeholder.com/360x360"}
+          alt={title}
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Ürün Bilgileri */}
@@ -28,7 +32,7 @@ const ProductCard = ({ id, title, subtitle, price, discount, images }) => {
           <span className="w-4 h-4 rounded-full bg-black"></span>
         </div>
       </div>
-    </Link>
+      </Link>
   );
 };
 
