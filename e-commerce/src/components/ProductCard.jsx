@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ProductCard = ({ id, title, subtitle, price, discount, image }) => {
+const ProductCard = ({ id, title, subtitle, price, discount, images }) => {
   return (
-    <Link to={`/product/${id}`} className="bg-white rounded-lg overflow-hidden p-4 block">
+    <Link to={`/product/${id}`} className="bg-white rounded-lg overflow-hidden p-4">
       {/* Ürün Resmi */}
       <div className="w-full h-80">
-        <img src={image} alt={title} className="w-full h-full object-cover" />
+        <img src={images[0]} alt={title} className="w-full h-full object-cover" />
       </div>
-      
+
       {/* Ürün Bilgileri */}
       <div className="mt-4 text-center">
         <h3 className="text-lg font-bold text-gray-800">{title}</h3>

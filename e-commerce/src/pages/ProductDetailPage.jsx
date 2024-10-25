@@ -1,5 +1,9 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 import products from '../data/products';
 
 const ProductDetailPage = () => {
@@ -19,13 +23,48 @@ const ProductDetailPage = () => {
 
       {/* Ürün Detayları */}
       <div className="container mx-auto bg-white p-8 flex flex-col md:flex-row gap-8 shadow-md rounded-lg">
-        <div className="flex-1">
-          <img src={product.image} alt={product.title} className="w-full h-auto object-cover" />
+  <div className="flex-1">
+    {/* Carousel */}
+    {product.images && product.images.length > 0 ? (
+      <>
+        <Swiper
+          navigation
+          modules={[Navigation]}
+          className="mySwiper"
+          style={{ width: '506px', height: '450px' }}
+        >
+          {product.images.map((image, index) => (
+            <SwiperSlide key={index}>
+              <img src={image} alt={`Product ${index + 1}`} className="w-full h-auto object-cover" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Küçük Resimler */}
+        <div className="flex mt-4 space-x-4">
+          {product.images.map((image, index) => (
+            <img
+              key={index}
+              src={image}
+              alt={`Thumbnail ${index + 1}`}
+              className="w-20 h-20 object-cover cursor-pointer border border-gray-300"
+              onClick={() => {
+                document.querySelectorAll('.swiper-slide')[index].scrollIntoView({
+                  behavior: 'smooth',
+                });
+              }}
+            />
+          ))}
         </div>
-        <div className="flex-1">
-          <ProductDetails product={product} />
-        </div>
-      </div>
+      </>
+    ) : (
+      <p>There are no images available for this product.</p>
+    )}
+  </div>
+  <div className="flex-1">
+    <ProductDetails product={product} />
+  </div>
+</div>
     </div>
   );
 };
