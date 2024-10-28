@@ -77,6 +77,7 @@ const Header = () => {
             <Link to="/about" className="text-sm font-bold text-gray-700 hover:text-gray-900">About</Link>
             <Link to="/blog" className="text-sm font-bold text-gray-700 hover:text-gray-900">Blog</Link>
             <Link to="/contact" className="text-sm font-bold text-gray-700 hover:text-gray-900">Contact</Link>
+            <Link to="/team" className="text-sm font-bold text-gray-700 hover:text-gray-900">Team</Link> {/* Yeni Eklenen Link */}
             <Link to="/pages" className="text-sm font-bold text-gray-700 hover:text-gray-900">Pages</Link>
           </nav>
           <div className="flex items-center space-x-6">
@@ -97,6 +98,7 @@ const Header = () => {
           <Link to="/product" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Product</Link>
           <Link to="/pricing" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Pricing</Link>
           <Link to="/contact" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Contact</Link>
+          <Link to="/team" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Team</Link> {/* Yeni Eklenen Link */}
         </nav>
       </div>
     </header>
