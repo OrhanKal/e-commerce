@@ -5,6 +5,8 @@ import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
 import PageContent from './layout/PageContent';
 import ProductDetailPage from './pages/ProductDetailPage';
+import ContactPage from './pages/ContactPage';
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
           <Route exact path="/product/:productId" component={ProductDetailPage} />
+          <Route path="/contact" exact component={ContactPage} />
           {/* Diğer sayfalar buraya eklenebilir */}
         </Switch>
       </PageContent>
