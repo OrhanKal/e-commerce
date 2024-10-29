@@ -7,7 +7,7 @@ import PageContent from './layout/PageContent';
 import ProductDetailPage from './pages/ProductDetailPage';
 import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
-
+import AboutUsPage from './pages/AboutUsPage';
 
 function App() {
   return (
@@ -20,6 +20,7 @@ function App() {
           <Route exact path="/product/:productId" component={ProductDetailPage} />
           <Route path="/contact" exact component={ContactPage} />
           <Route path="/team" component={TeamPage} />
+          <Route path="/about" component={AboutUsPage} />
           {/* Diğer sayfalar buraya eklenebilir */}
         </Switch>
       </PageContent>
