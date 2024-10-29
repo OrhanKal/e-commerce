@@ -52,6 +52,20 @@ const AboutUsPage = () => {
           <p className="text-gray-600">Top Partners</p>
         </div>
       </div>
+
+      {/* Video Bölümü */}
+      <div className="container mx-auto p-8 flex justify-center">
+        <div className="relative rounded-lg overflow-hidden w-[316px] h-[316px] lg:w-[989px] lg:h-[540px]">
+          <iframe
+            className="w-full h-full rounded-lg object-cover"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="About Us Video"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
     </div>
   );
 };
