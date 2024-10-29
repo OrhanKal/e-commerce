@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LogoGrid from "../components/LogoGrid"; // Yeni eklenen LogoGrid bileşeni
+import TeamPage from './TeamPage';
 
 const AboutUsPage = () => {
   return (
@@ -53,6 +55,8 @@ const AboutUsPage = () => {
         </div>
       </div>
 
+      <TeamPage />
+
       {/* Video Bölümü */}
       <div className="container mx-auto p-8 flex justify-center">
         <div className="relative rounded-lg overflow-hidden w-[316px] h-[316px] lg:w-[989px] lg:h-[540px]">
@@ -65,6 +69,15 @@ const AboutUsPage = () => {
             allowFullScreen
           ></iframe>
         </div>
+      </div>
+
+      {/* Logo Grid */}
+      <div className="text-center w-full bg-[#FAFAFA] py-8">
+        <div className='flex-col mx-auto w-1/2'>
+        <h2 className="text-3xl font-bold mb-2">Big Companies Are Here</h2>
+        <p className="text-gray-500 ">Problems trying to resolve the conflict between the two major realms of Classical physics: Newtonian mechanics</p>
+        </div>
+        <LogoGrid />
       </div>
     </div>
   );
