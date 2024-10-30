@@ -18,7 +18,12 @@ const SignUpPage = () => {
       try {
         const response = await axiosInstance.get('/roles');
         setRoles(response.data);
-        setValue('role_id', response.data.find(role => role.name === 'Customer').id);
+
+        // Varsayılan role_id "Müşteri" olarak ayarlanıyor
+        const müşteriRolü = response.data.find(role => role.name === 'Müşteri');
+        if (müşteriRolü) {
+          setValue('role_id', müşteriRolü.id);
+        }
       } catch (error) {
         console.error('Rol bilgileri alınamadı:', error);
       }
@@ -29,6 +34,7 @@ const SignUpPage = () => {
 
   // Form gönderildiğinde çalışacak fonksiyon
   const onSubmit = async (data) => {
+    console.log("Gönderilen Veri:", data);
     setLoading(true);
     try {
       // password_confirmation alanını sil
@@ -49,8 +55,8 @@ const SignUpPage = () => {
       }
 
       // API'ye veri gönderilmeden önce konsola yazdırarak kontrol edin
-    console.log("API'ye Gönderilen Veri:", data);
-    
+      console.log("API'ye Gönderilen Veri:", data);
+
       const response = await axiosInstance.post('/signup', data);
       alert('You need to click the link in your email to activate your account!');
       history.goBack();
@@ -133,7 +139,6 @@ const SignUpPage = () => {
               />
               {errors.store_name && <p className="text-red-500 text-sm">{errors.store_name.message}</p>}
             </div>
-
             <div className="mb-4">
               <label className="block text-sm font-bold mb-2">Store Phone</label>
               <input
@@ -142,30 +147,7 @@ const SignUpPage = () => {
               />
               {errors.store_phone && <p className="text-red-500 text-sm">{errors.store_phone.message}</p>}
             </div>
-
-            <div className="mb-4">
-              <label className="block text-sm font-bold mb-2">Store Tax ID</label>
-              <input
-                {...register('store_tax_no', {
-                  required: 'Store Tax ID is required',
-                  pattern: { value: /^T\d{4}V\d{6}$/, message: 'Tax ID must match the pattern TXXXXVXXXXXX' }
-                })}
-                className="border border-gray-300 p-2 w-full rounded"
-              />
-              {errors.store_tax_no && <p className="text-red-500 text-sm">{errors.store_tax_no.message}</p>}
-            </div>
-
-            <div className="mb-4">
-              <label className="block text-sm font-bold mb-2">Store Bank Account (IBAN)</label>
-              <input
-                {...register('store_bank_account', {
-                  required: 'Store Bank Account is required',
-                  pattern: { value: /^[A-Z]{2}\d{2}[A-Z0-9]{1,30}$/, message: 'Invalid IBAN address' }
-                })}
-                className="border border-gray-300 p-2 w-full rounded"
-              />
-              {errors.store_bank_account && <p className="text-red-500 text-sm">{errors.store_bank_account.message}</p>}
-            </div>
+            {/* Diğer Store Alanları */}
           </>
         )}
 
