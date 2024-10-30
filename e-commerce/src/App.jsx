@@ -8,6 +8,7 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
 import AboutUsPage from './pages/AboutUsPage';
+import SignUpPage from './pages/SignUpPage';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/contact" exact component={ContactPage} />
           <Route path="/team" component={TeamPage} />
           <Route path="/about" component={AboutUsPage} />
+          <Route path="/signup" component={SignUpPage} />
           {/* Diğer sayfalar buraya eklenebilir */}
         </Switch>
       </PageContent>
