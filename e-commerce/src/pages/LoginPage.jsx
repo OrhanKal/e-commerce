@@ -3,7 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
-import { loginUser } from '../redux/actions/authActions';
+import { loginUser } from "../redux/actions/authActions";
 
 const LoginPage = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
