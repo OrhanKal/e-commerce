@@ -147,7 +147,28 @@ const SignUpPage = () => {
               />
               {errors.store_phone && <p className="text-red-500 text-sm">{errors.store_phone.message}</p>}
             </div>
-            {/* Diğer Store Alanları */}
+            <div className="mb-4">
+              <label className="block text-sm font-bold mb-2">Store Tax ID</label>
+              <input
+                {...register('store_tax_no', {
+                  required: 'Store Tax ID is required',
+                  pattern: { value: /^T\d{4}V\d{6}$/, message: 'Invalid Store Tax ID. Format: TXXXXVXXXXXX' }
+                })}
+                className="border border-gray-300 p-2 w-full rounded"
+              />
+              {errors.store_tax_no && <p className="text-red-500 text-sm">{errors.store_tax_no.message}</p>}
+            </div>
+            <div className="mb-4">
+              <label className="block text-sm font-bold mb-2">Store Bank Account (IBAN)</label>
+              <input
+                {...register('store_bank_account', {
+                  required: 'Store Bank Account is required',
+                  pattern: { value: /^[A-Z]{2}\d{2}[A-Z0-9]{1,30}$/, message: 'Invalid IBAN address' }
+                })}
+                className="border border-gray-300 p-2 w-full rounded"
+              />
+              {errors.store_bank_account && <p className="text-red-500 text-sm">{errors.store_bank_account.message}</p>}
+            </div>
           </>
         )}
 
