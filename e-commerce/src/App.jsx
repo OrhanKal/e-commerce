@@ -9,6 +9,8 @@ import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
 import AboutUsPage from './pages/AboutUsPage';
 import SignUpPage from './pages/SignUpPage';
+import LoginPage from './pages/LoginPage';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
@@ -23,10 +25,12 @@ function App() {
           <Route path="/team" component={TeamPage} />
           <Route path="/about" component={AboutUsPage} />
           <Route path="/signup" component={SignUpPage} />
+          <Route path="/login" component={LoginPage} />
           {/* Diğer sayfalar buraya eklenebilir */}
         </Switch>
       </PageContent>
       <Footer />
+      <ToastContainer />
     </Router>
   );
 }

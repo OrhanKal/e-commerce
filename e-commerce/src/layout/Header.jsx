@@ -1,12 +1,16 @@
+// src/layout/Header.jsx
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faSearch, faShoppingCart, faBars, faPhone, faEnvelope, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const user = useSelector((state) => state.client.user); // Redux'tan user bilgisini alıyoruz
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -14,10 +18,7 @@ const Header = () => {
 
   const toggleDropdown = (e) => {
     e.stopPropagation();
-    setDropdownOpen((prev) => {
-      console.log('Dropdown durumu:', !prev);
-      return !prev;
-    });
+    setDropdownOpen((prev) => !prev);
   };
 
   useEffect(() => {
@@ -105,15 +106,28 @@ const Header = () => {
               <Link to="/team" className="text-sm font-bold text-gray-700 hover:text-gray-900">Team</Link>
               <Link to="/pages" className="text-sm font-bold text-gray-700 hover:text-gray-900">Pages</Link>
             </nav>
+
             <div className="hidden md:flex items-center space-x-4">
-              <FontAwesomeIcon icon={faUser} className="text-blue-500" />
-              <Link to="/login" className="text-sm font-bold text-blue-500 hover:text-blue-800">Login</Link>
-              <span className="text-sm font-bold text-blue-500">/</span>
-              <Link to="/signup" className="text-sm font-bold text-blue-500 hover:text-blue-800">Register</Link>
+              {user.email ? (
+                // Kullanıcı giriş yapmışsa profil resmini ve e-posta adresini gösteriyoruz
+                <div className="flex items-center space-x-2">
+                  <img src={user.avatar} alt="User Avatar" className="w-8 h-8 rounded-full" />
+                  <span className="text-sm font-bold text-gray-700">{user.email}</span>
+                </div>
+              ) : (
+                // Kullanıcı giriş yapmamışsa Login ve Register bağlantılarını gösteriyoruz
+                <>
+                  <FontAwesomeIcon icon={faUser} className="text-blue-500" />
+                  <Link to="/login" className="text-sm font-bold text-blue-500 hover:text-blue-800">Login</Link>
+                  <span className="text-sm font-bold text-blue-500">/</span>
+                  <Link to="/signup" className="text-sm font-bold text-blue-500 hover:text-blue-800">Register</Link>
+                </>
+              )}
               <FontAwesomeIcon icon={faSearch} className="text-blue-500 ml-4" />
               <FontAwesomeIcon icon={faShoppingCart} className="text-blue-500" />
               <FontAwesomeIcon icon={faHeart} className="text-blue-500" />
             </div>
+
             <button onClick={toggleMenu} className="md:hidden">
               <FontAwesomeIcon icon={faBars} className="text-gray-700" />
             </button>
@@ -122,28 +136,26 @@ const Header = () => {
       </div>
 
       {/* Mobil Menü */}
-<div className={`overflow-hidden transition-all duration-500 ease-in-out ${menuOpen ? 'max-h-[100vh] opacity-100' : 'max-h-0 opacity-0'}`}>
-  <nav className="flex flex-col items-center space-y-4 bg-white py-4">
-    <Link to="/" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Home</Link>
-    <Link to="/product" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Product</Link>
-    <Link to="/pricing" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Pricing</Link>
-    <Link to="/contact" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Contact</Link>
-    <Link to="/team" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Team</Link>
-    {/* Login ve Register Linkleri Mobil Menüde */}
-    <div className="flex items-center space-x-2 mt-4">
-      <FontAwesomeIcon icon={faUser} className="text-blue-600" />
-      <Link to="/login" className="text-lg text-blue-600 hover:text-blue-800" onClick={toggleMenu}>Login</Link>
-      <span className="text-lg text-blue-600">/</span>
-      <Link to="/signup" className="text-lg text-blue-600 hover:text-blue-800" onClick={toggleMenu}>Register</Link>
-    </div>
-    {/* Alt Menü İkonları */}
-    <div className="flex flex-col items-center space-y-4 mt-8">
-      <FontAwesomeIcon icon={faSearch} className="text-blue-500" />
-      <FontAwesomeIcon icon={faShoppingCart} className="text-blue-500" />
-      <FontAwesomeIcon icon={faHeart} className="text-blue-500" />
-    </div>
-  </nav>
-</div>
+      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${menuOpen ? 'max-h-[100vh] opacity-100' : 'max-h-0 opacity-0'}`}>
+        <nav className="flex flex-col items-center space-y-4 bg-white py-4">
+          <Link to="/" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Home</Link>
+          <Link to="/product" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Product</Link>
+          <Link to="/pricing" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Pricing</Link>
+          <Link to="/contact" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Contact</Link>
+          <Link to="/team" className="text-lg text-gray-700 hover:text-gray-900" onClick={toggleMenu}>Team</Link>
+          <div className="flex items-center space-x-2 mt-4">
+            <FontAwesomeIcon icon={faUser} className="text-blue-600" />
+            <Link to="/login" className="text-lg text-blue-600 hover:text-blue-800" onClick={toggleMenu}>Login</Link>
+            <span className="text-lg text-blue-600">/</span>
+            <Link to="/signup" className="text-lg text-blue-600 hover:text-blue-800" onClick={toggleMenu}>Register</Link>
+          </div>
+          <div className="flex flex-col items-center space-y-4 mt-8">
+            <FontAwesomeIcon icon={faSearch} className="text-blue-500" />
+            <FontAwesomeIcon icon={faShoppingCart} className="text-blue-500" />
+            <FontAwesomeIcon icon={faHeart} className="text-blue-500" />
+          </div>
+        </nav>
+      </div>
     </header>
   );
 };
