@@ -4,13 +4,15 @@ import { faUser, faSearch, faShoppingCart, faBars, faPhone, faEnvelope, faHeart 
 import { faFacebookF, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '../redux/actions/authActions';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const user = useSelector((state) => state.client.user); // Redux'tan user bilgisini alıyoruz
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.client.user); // Tek bir user tanımı var
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -19,6 +21,10 @@ const Header = () => {
   const toggleDropdown = (e) => {
     e.stopPropagation();
     setDropdownOpen((prev) => !prev);
+  };
+  
+  const handleLogout = () => {
+    dispatch(logout());
   };
 
   useEffect(() => {
@@ -109,13 +115,17 @@ const Header = () => {
 
             <div className="hidden md:flex items-center space-x-4">
               {user.email ? (
-                // Kullanıcı giriş yapmışsa profil resmini ve e-posta adresini gösteriyoruz
                 <div className="flex items-center space-x-2">
                   <img src={user.avatar} alt="User Avatar" className="w-8 h-8 rounded-full" />
                   <span className="text-sm font-bold text-gray-700">{user.email}</span>
+                  <button 
+                    onClick={handleLogout}
+                    className="ml-2 px-3 py-1 text-sm font-bold text-white bg-red-500 hover:bg-red-600 rounded transition-colors"
+                  >
+                    Logout
+                  </button>
                 </div>
               ) : (
-                // Kullanıcı giriş yapmamışsa Login ve Register bağlantılarını gösteriyoruz
                 <>
                   <FontAwesomeIcon icon={faUser} className="text-blue-500" />
                   <Link to="/login" className="text-sm font-bold text-blue-500 hover:text-blue-800">Login</Link>
