@@ -15,19 +15,16 @@ export const loginUser = (data) => async (dispatch) => {
         const { token, name, email, role_id } = response.data;
         const emailHash = md5(email.trim().toLowerCase());
         const gravatarUrl = `https://www.gravatar.com/avatar/${emailHash}`;
-  
+        
         dispatch(setUser({ name, email, role_id, avatar: gravatarUrl }));
-  
-        // Token'ı kaydetmeden önce kontrol
-        console.log("Token kaydediliyor:", token);
-  
+        
+        // Token kaydetme işlemi
         if (data.rememberMe) {
           localStorage.setItem('token', token);
         } else {
           sessionStorage.setItem('token', token);
         }
   
-        // Token kaydedildikten sonra kontrol
         console.log("localStorage'daki token:", localStorage.getItem('token'));
         console.log("sessionStorage'daki token:", sessionStorage.getItem('token'));
   
@@ -44,19 +41,25 @@ export const loginUser = (data) => async (dispatch) => {
 export const checkAuth = () => async (dispatch) => {
     try {
       const token = localStorage.getItem('token') || sessionStorage.getItem('token');
-      
-      // Token kontrolü
       console.log("checkAuth sırasında token:", token);
       
       if (token) {
         const response = await axiosInstance.get("/verify");
         
         if (response.status === 200) {
-          const { name, email, role_id } = response.data;
+          const { name, email, role_id, newToken } = response.data; // backend'den yenilenen bir token alıyorsanız
+          
+          // Kullanıcı bilgilerini reducer'a ekleyin
           const emailHash = md5(email.trim().toLowerCase());
           const gravatarUrl = `https://www.gravatar.com/avatar/${emailHash}`;
-  
           dispatch(setUser({ name, email, role_id, avatar: gravatarUrl }));
+  
+          // Yeni token varsa yenileyin, yoksa eski token ile devam edin
+          if (newToken) {
+            localStorage.setItem('token', newToken);
+            sessionStorage.setItem('token', newToken);
+          }
+          
           return true;
         }
       }
